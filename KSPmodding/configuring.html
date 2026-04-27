@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tethys - Home</title>
+        <link href="/KSPmodding/style.css" rel="stylesheet" type="text/css" media="all">
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Proxi's KSP Modding Guide</h1>
+        </div>
+        <div class="navbar">
+            <a href="/KSPmodding/home.html">Back to home</a>
+            <a href="/KSPmodding/configuring.html#other-tutorials">Other tutorials</a>
+            <a href="/KSPmodding/configuring.html#tips">Tips</a>
+            <a href="/KSPmodding/configuring.html#basics">Basics</a>
+            <a href="/KSPmodding/configuring.html#modules">Modules</a>
+        </div>
+        <div class="main">
+            <h1>Configuring</h1>
+            <p>This will cover basic part configuration for stock parts. There are separate configuration tutorials below.</p>
+            <h2><a id="other-tutorials">Other tutorials</a></h2>
+            <ul>
+                <li><a>Landing gears with KSPWheel (WIP)</a></li>
+                <li><a href="https://github.com/ferram4/Ferram-Aerospace-Research/wiki">Ferram Aerospace Research</a> - slightly outdated</li>
+                <li><a href="https://github.com/KSPModStewards/Waterfall/wiki">Waterfall plumes</a></li>
+                <li><a href="https://github.com/blowfishpro/B9PartSwitch/wiki">B9PartSwitch</a></li>
+                <li><a href="https://github.com/Tantares/Resurfaced/wiki/Resurfaced">Resurfaced</a></li>
+            </ul>
+
+            <h2><a id="tips">Tips</a></h2>
+            <p>It's best reference a part that closely matches yours, especially if you are starting out, it is perfectly fine as long as you don't copy everything exactly word for word.</p>
+            <p>Keep your config neat, maybe even commented, just so you and other modders can understand your code and possibly modify it in the future. You can write comments using a double slash (//).</p>
+            <p>While you can edit configs using Notepad, I personally prefer to use Visual Studio Code with KSP CFG Support addon as it is easier to see what i'm doing. This is completely up to you.</p>
+            <p>Consider reading the <a href="https://wiki.kerbalspaceprogram.com/wiki/CFG_File_Documentation">KSP CFG File Documentation</a>, though it is a little outdated.</p>
+
+            <h2><a id="basics">Basics</a></h2>
+            <p>Let's start with the <b>name</b>, <b>module</b> and <b>author</b>. This is simple. I personally like to name my part PROXI-[part name] just so that it is easier to call it from other configs. For <b>module</b>, you can leave it as Part, i'm assuming you are making a part. Finally for <b>author</b>, write your alias.</p>
+            <p>Now we need the model. Use <b>MODEL{ model = yourModName/yourPartDirectory }</b> to get the model in to the config.</p>
+            <p>Assuming you created the nodes in Blender (see <a href="/KSPmodding/rigging.html#other-notes">here</a>) use <b>NODE{}</b>, within it should be <b>name</b>, <b>transform</b>, <b>size</b>, and <b>method</b>. <b>name</b> is the... name of your node, <b>transform</b> is the name of the node in Unity (should be node_[something] ), <b>size</b> is how large the attachment is, most of the time is either size 2 or 3 in my experience, finally <b>method</b> is how the attachment would work, most of the time FIXED_JOINT does the trick.</p>
+            <p>Afterwards you have the rest of the basic configuration, I won't go through them all but here are the important ones.</p>
+            <ul>
+                <li>attachRules = 1,1,1,1,1 ; with the tags being: stack, srfAttach, allowStack, allowSrfAttach, allowCollision</li>
+                <li>maximum_drag and minimum_drag should both be left as 0.1 unless it's a wing or you know what you're doing</li>
+                <li>maxTemp - max temperature of the entire part</li>
+                <li>skinMaxTemp - max temperature of the surface of the part</li>
+            </ul>
+            <span class="span"></span>
+            <img class="center-img" src="/KSPmodding/images/configbasics.png">
+
+            <h2><a id="modules">Modules</a></h2>
+            <h3>ModuleAnimateGeneric</h3>
+            <ul class="module-list">
+                <li>animationName = animation name in Unity</li>
+                <li>startEventGUIName = event name before animation plays</li>
+                <li>endEventGUIName = event name after animation finishes</li>
+                <li>actionGUIName = name of event in action group editor</li>
+                <li>allowDeployLimit = limit the length of animation</li>
+                <li>revClampDirection = leave as false</li>
+                <li>revClampSpeed = whether animation can reverse</li>
+                <li>revClampPercent = leave as true</li>
+                <li>toggleAction = whether action can be toggled</li>
+                <li>defaultActionGroup = as the name suggests</li>
+            </ul>
+        </div>
+    </body>
+</html>

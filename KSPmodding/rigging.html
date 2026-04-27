@@ -12,22 +12,26 @@
         </div>
         <div class="navbar">
             <a href="/KSPmodding/home.html">Back to home</a>
+            <a href="/KSPmodding/rigging.html#gimbal-links">Gimbal links</a>
+            <a href="/KSPmodding/rigging.html#deforming-meshes">Deforming meshes</a>
+            <a href="/KSPmodding/rigging.html#landing-gears">Landing gears</a>
+            <a href="/KSPmodding/rigging.html#other-notes">Other notes</a>
         </div>
         <div class="main">
             <h1>Rigging</h1>
-            <h2>Gimbal links</h2>
+            <h2><a id="gimbal-links">Gimbal links</a></h2>
             <p>Most engines use hydraulic pistons for gimbal control, with the upper half connecting to the vehicle's body, and the lower half connecting to the engine. This can be achieved using the <b>FXModuleLookAtConstraint</b> module.</p> <p>Alternatively you can use <b>ModuleAdvancedLookAtConstraint</b> from the DeployableEngines mod, which handles rotation much better and prevents the strange rolling issue you can sometimes see.</p>
             <p>Create two empties, preferably using the Arrows Empty. Place them at where you want the pivot points of your links to be, and use the Track To Object Constraint with the Track Axis set to Z with Y as up, then apply the constraint. Do this for both empties. Model your links and ensure that you copy the empty's rotation to the model. Then parent your models to the empties. It should look something like this:</p>
-            <img style="height: 350px;" src="/KSPmodding/images/piston.png">
+            <img class="center-img" src="/KSPmodding/images/piston.png">
             
-            <h2>Deforming meshes</h2>
+            <h2><a id="deforming-meshes">Deforming meshes</a></h2>
             <p>This is especially useful for things like tubing or engine mounts that require to be deformed as the engine gimbals. This requires the use of an armature.</p>
             <p>In your armature, create two bones, we will name it <b>fixed</b> and <b>gimbal</b>. Just like the gimbal links, ensure the bones' Z axis are facing each other. To check the axis, go to the armature's Object Data Properties and enable "Axes" under Viewport Display. You might also want to change the bone display to Stick for easier viewing.</p>
             <p>Create two vertex groups in the mesh you want to deform, with the names being <b>fixed</b> and <b>gimbal</b>, and weight paint the respective vertex groups. Once done, parent the mesh to the armature using Armature Deform.</p>
             <p>Once you checked your mesh is deforming correctly, parent the rest of the gimballing engine to the armature using Bone, make sure <b>gimbal</b> is selected in Pose Mode.</p>
             <img class="center-img" src="/KSPmodding/images/gimbal.png">
 
-            <h2>Landing gears (using KSPWheel)</h2>
+            <h2><a id="landing-gears">Landing gears (using KSPWheel)</a></h2>
             <p>Landing gears have got to be the most difficult thing to configure, but I will try my best to keep things simple. I will be rigging using the <b>KSPWheel</b> mod's way as it simplfies things a lot more than the stock system in my opinion, plus it is much easier to configure later on using KSPWheel, this however, would <b>require KSPWheel to be a hard dependency for your mod.</b> Also it's good to have a reference if you are becoming lost.</p>
             <p>Create your main landing gear strut mesh, we will name it <b>WheelRetract</b>, this part will have the extending and retracting animation.</p>
             <p>Next, create an empty called <b>deployTgt</b> which would be located at the center of the tire.</p>
@@ -38,7 +42,33 @@
             <p>Almost there... create two more empties called <b>SuspensionPivot</b> and <b>SuspensionPivotNeutral</b>, the first controls the up and down movement of the wheel, with the latter being the rest position of the wheel when it is hanging. Both empties have the same origins.</p>
             <img class="center-img" src="/KSPmodding/images/Gear3.png">
             <p>Aaaand that should be all the main empties you need, here is a hierarcy list for you to reference. The rest of gear configuring can be found <a href="">here</a>.</p>
+            <ul class="hierarcy2">
+                <li>WheelCollider</li>
+                <li>WheelRetract</li>
+                <ul class="hierarcy2">
+                    <li>deployTgt</li>
+                    <li>SteeringActuator</li>
+                    <ul class="hierarcy2">
+                        <li>SteeringPivot</li>
+                        <ul class="hierarcy2">
+                            <li>SuspensionPivotNeutral</li>
+                            <li>SuspensionPivot</li>
+                            <ul class="hierarcy2">
+                                <li>Your wheel and strut mesh</li>
+                            </ul>
+                        </ul>
+                    </ul>
+                </ul>
+            </ul>
+            <span class="span"></span>
             <img class="center-img" src="/KSPmodding/images/gearhirearchy.png">
+
+            <h2><a id="other-notes">Other notes</a></h2>
+            <p>Engines should have an empty named <b>thrustTransform</b> with Z axis pointed in the direction of thrust.</p>
+            <p>RCS thrusters should have an empty named <b>RCSthruster</b> with Y axis pointed in the direction of thrust.</p>
+            <p>Nodes should be named node_[node name here] and have Z axis pointing to attachment direction.</p>
+            <p>When creating flaps or airbrakes, the empty it is parented to should be orientated where each of its axis points to the respective positive axis' of the world (Empty's +ve X axis points to world's +ve X axis). The X axis is where the rotation axis is.</p>
+            <img class="center-img" src="/KSPmodding/images/flap.png">
         </div>
     </body>
 </html>

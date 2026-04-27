@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tethys - Home</title>
+        <link href="/KSPmodding/style.css" rel="stylesheet" type="text/css" media="all">
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Proxi's KSP Modding Guide</h1>
+        </div>
+        <div class="navbar">
+            <a href="/KSPmodding/home.html">Back to home</a>
+            <a href="/KSPmodding/unity.html#blender-export">Blender export</a>
+            <a href="/KSPmodding/unity.html#unity-import">Unity import</a>
+            <a href="/KSPmodding/unity.html#materials">Materials</a>
+            <a href="/KSPmodding/unity.html#engine-cores">Engine cores</a>
+            <a href="/KSPmodding/unity.html#colliders">Colliders</a>
+            <a href="/KSPmodding/unity.html#unity-export">Unity export</a>
+        </div>
+        <div class="main">
+            <h1>Unity</h1>
+            <h2><a id="blender-export">Exporting from Blender</a></h2>
+            <p>Select the object you wish to export, the go to File > Export > FBX.</p>
+            <img class="center-img" src="/KSPmodding/images/export.png">
+            <p>In the popup window, set Limit to Selected Objects. Object Types should be set to Empty, Armature, Mesh and Other. Ensure Apply Transform is unchecked, it never works for me.</p>
+            <p>If you have animations, make sure the Animation check box is checked, and disable all but Key All Bones. KSP only supports one animation per part.</p>
+            <img class="center-img" src="/KSPmodding/images/exportlist.png">
+
+            <h2><a id="unity-import">Importing to Unity</a></h2>
+            <p>Drag and drop your FBX file into your Unity project, there are a couple of things we need to do before working on it.</p>
+            <p>Click on your imported FBX in the file browser, in the Inspector, go to Materials and Extract Materials (assuming you aren't reusing textures). Your materials should be in the file browser now.</p>
+            <img class="center-img" src="/KSPmodding/images/unitymaterialimport.png">
+            <p>If your part has animations, go to Rig and set Animation Type to Legacy. Then go to Animation and change the name to something easier to remember, then hit apply.</p>
+            <img class="center-img" src="/KSPmodding/images/unityanimation.png">
+            <p>Your part should now be ready.</p>
+
+            <h2><a id="materials">Materials</a></h2>
+            <p>We will be creating a material with an emissive texture. Under the extracted materials, find the one you want to edit. Under Shader, select <b>KSP/Emissive/Bumped Specular</b> (it would be <b>KSP/Bumped Specular</b> for regular materials). Drag and drop the correct textures into the respective maps.</p>
+            <p>You might get a warning saying the bump map is not actually a bump map... well it is, and there is likely a Fix Now button under the texture box, just click that and the issue is resolved.</p>
+            <p>Also for some reason _Color is not always set to pure white, so make sure it is, otherwise your parts might appear darker than they actually are.</p>
+            <img class="center-img" src="/KSPmodding/images/unitymaterial.png">
+
+            <h2><a id="engine-cores">Creating engine cores</a></h2>
+            <p>This was referenced from <a href="https://docs.google.com/document/d/1rOmItgLcwC0AM2gbNuc8JwhG_NWL43XU7M_l1yHJato/edit?tab=t.0#heading=h.gl83hugud79n">The KSP Part Modding Guide</a></p>
+            <img class="center-img" src="/KSPmodding/images/nerta.png">
+            <p>The above image, created by Nertea, shows how to create and configure an engine emissive with heat and throttle glow. A separate mesh is required on the inside of the bell.</p>
+            <p>This mesh should have its own material using the <b>KSP/Particles/Additive</b> shader.</p>
+            <p>Its transform name should be unique for use in the config file (it is named <b>STBEEngineCore</b> in the image).</p>
+            <p>The Unity Layer should be set to <b>TransparentFX</b>, with the Unity Tag set to <b>Icon_Hidden</b> so that the glow does not show in the part selection icons.</p>
+            <p>Hide the emissive by unchecking the check box in the Inspector before exporting.</p>
+            <p><b>For ModuleDepthMask users</b>: Note that if you intend to use depth masks later on, your engine core will not appear due to rendering limitations. A work around is to compress your engine core mesh on the vertical axis until it is nearly flat, and move it slightly out of the depth mask mesh. (Thanks NoLifeJordan)</p>
+
+            <h2><a id="colliders">Colliders</a></h2>
+            <p>Select your collider meshes, remove the Mesh Renderer and add the Mesh Collider component, ensure that convex is checked. Reminder that KSP does not support concave colliders.</p>
+
+            <h2><a id="unity-export">Exporting from Unity</a></h2>
+            <p>Assuming you have followed PartTool's installation instructions, the following should be a breeze. In the main parent transform, add the Part Tools component. Fill up the model's name and set the file URL to your mod. If you are writing textures for the first time, leave the Write Textures check box ticked. Once you are ready click Write.</p>
+            <p>Note that PartTools export textures as PNGs. KSP has a terrible PNG convertor, so it is recommended to use DDS files. See <a href="/KSPmodding/texturing.html#DDS&PNGs">here</a> for how to export DDS files from Gimp.</p>
+        </div>
+    </body>
+</html>

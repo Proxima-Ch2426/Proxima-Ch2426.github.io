@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tethys - Home</title>
+        <link href="/KSPmodding/style.css" rel="stylesheet" type="text/css" media="all">
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Proxi's KSP Modding Guide</h1>
+        </div>
+        <div class="navbar">
+            <a href="/KSPmodding/home.html">Back to home</a>
+            <a href="/KSPmodding/texturing.html#community-standards">Community standards</a>
+            <a href="/KSPmodding/texturing.html#diffuse-maps">Diffuse maps</a>
+            <a href="/KSPmodding/texturing.html#normal-maps">Normal maps</a>
+            <a href="/KSPmodding/texturing.html#helpful-guides">Helpful guides</a>
+            <a href="/KSPmodding/texturing.html#DDS&PNGs">DDS and PNGs</a>
+        </div>
+        <div class="main">
+            <h1>Texturing</h1>
+            <p>Im going to be using Gimp as a guide to create textures, though you can use any other platform that can create lines and colours, maybe even Microsoft Paint if you are crazy.</p>
+            <h2><a id="community-standards">Community Standards</a></h2>
+            <p>These are the most common colours used in the KSP modding community, obviously you are not limited to these colours.</p>
+            <img class="center-img" src="/KSPmodding/images/nertea_colours_flat.png">
+            <p>Try to keep your texture at most 4k by 4k, with the max being 8k by 8k, as higher textures might get messed up.</p>
+            <p>KSP uses Diffuse, Specular, Emission, Normal and Alpha Cutoff maps, with Specular being controlled by the alpha channel of the Diffuse map, with the rest requring separate textures.</p>
+
+            <h2><a id="diffuse-maps">Diffuse maps with alpha</a></h2>
+            <p>Create your diffuse texture, preferably using separate layers for easier editting in the future. Next, place all your layers under one layer group, we will call this <b>all</b>, and above it create your black and white alpha texture. Lighter colours have higher specularity (more reflective), with darker colours being the opposite.</p>
+            <img class="center-img" src="/KSPmodding/images/layers.png">
+            <p>Once done with your alpha texture, while on the alpha layer, select all with Ctrl-A and copy with Ctrl-C. Under <b>all</b>, create a new layer mask, and paste your alpha texture into your layer mask. Your image show now show transparency.</p>
+            <img class="center-img" src="/KSPmodding/images/layermask.png">
+
+            <h2><a id="normal-maps">Normal maps</a></h2>
+            <p>One way to do it is to hand draw every bit of bump in black and white, with black being lower areas and white being the opposite. Another way is to turn your diffuse texture into a black and white image, bump up the contrast a little, and shove it into a normal map converting software. I personally use <a href="https://xnormal.net/">xNormal</a>, though there are other options.</p>
+
+            <h2><a id="helpful-guides">Helpful guides</a></h2>
+            <ul>
+                <li><a href="https://forum.kerbalspaceprogram.com/topic/161526-cobalts-guide-to-how-to-texture-good-and-other-life-advice/">CobaltWolf's texture guide</a></li>
+            </ul>
+
+            <h2><a id="DDS&PNGs">DDS and PNGs</a></h2>
+            <p>KSP does not handle PNGs well, so it is recommended to use the DDS file format. Not only does the texture look better, but they take up less space in your mod. If exporting DDS files from Gimp, export RGBA images as DXT5, and normal maps as DXT5nm. Ensure the exported texture name matches the texture name given by PartTools. (if texture name is image1.png, export as image1.dds from Gimp).</p>
+        </div>
+    </body>
+</html>
