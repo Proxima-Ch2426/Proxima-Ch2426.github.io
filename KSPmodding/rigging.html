@@ -41,21 +41,19 @@
             <img class="center-img" src="/KSPmodding/images/Gear2.png">
             <p>Almost there... create two more empties called <b>SuspensionPivot</b> and <b>SuspensionPivotNeutral</b>, the first controls the up and down movement of the wheel, with the latter being the rest position of the wheel when it is hanging. Both empties have the same origins.</p>
             <img class="center-img" src="/KSPmodding/images/Gear3.png">
-            <p>Aaaand that should be all the main empties you need, here is a hierarcy list for you to reference. The rest of gear configuring can be found <a href="">here</a>.</p>
+            <p>Aaaand that should be all the main empties you need, here is a hierarcy list for you to reference. The rest of gear configuring can be found <a href="">here</a>. (Not yet)</p>
             <ul class="hierarcy2">
                 <li>WheelCollider</li>
                 <li>WheelRetract</li>
                 <ul class="hierarcy2">
                     <li>deployTgt</li>
                     <li>SteeringActuator</li>
+                    <li>SteeringPivot</li>
                     <ul class="hierarcy2">
-                        <li>SteeringPivot</li>
+                        <li>SuspensionPivotNeutral</li>
+                        <li>SuspensionPivot</li>
                         <ul class="hierarcy2">
-                            <li>SuspensionPivotNeutral</li>
-                            <li>SuspensionPivot</li>
-                            <ul class="hierarcy2">
-                                <li>Your wheel and strut mesh</li>
-                            </ul>
+                            <li>Your wheel and strut mesh</li>
                         </ul>
                     </ul>
                 </ul>

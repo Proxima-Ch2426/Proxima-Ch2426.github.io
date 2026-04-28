@@ -27,10 +27,12 @@
                 <li><a href="https://github.com/KSPModStewards/Waterfall/wiki">Waterfall plumes</a></li>
                 <li><a href="https://github.com/blowfishpro/B9PartSwitch/wiki">B9PartSwitch</a></li>
                 <li><a href="https://github.com/Tantares/Resurfaced/wiki/Resurfaced">Resurfaced</a></li>
+                <li><a href="https://github.com/sarbian/ModuleManager/wiki">Module Manager</a></li>
             </ul>
 
             <h2><a id="tips">Tips</a></h2>
             <p>It's best reference a part that closely matches yours, especially if you are starting out, it is perfectly fine as long as you don't copy everything exactly word for word.</p>
+            <p>Don't reference the item file extensions (.mu, .png, .dds) in the config files.</p>
             <p>Keep your config neat, maybe even commented, just so you and other modders can understand your code and possibly modify it in the future. You can write comments using a double slash (//).</p>
             <p>While you can edit configs using Notepad, I personally prefer to use Visual Studio Code with KSP CFG Support addon as it is easier to see what i'm doing. This is completely up to you.</p>
             <p>Consider reading the <a href="https://wiki.kerbalspaceprogram.com/wiki/CFG_File_Documentation">KSP CFG File Documentation</a>, though it is a little outdated.</p>
@@ -38,18 +40,33 @@
             <h2><a id="basics">Basics</a></h2>
             <p>Let's start with the <b>name</b>, <b>module</b> and <b>author</b>. This is simple. I personally like to name my part PROXI-[part name] just so that it is easier to call it from other configs. For <b>module</b>, you can leave it as Part, i'm assuming you are making a part. Finally for <b>author</b>, write your alias.</p>
             <p>Now we need the model. Use <b>MODEL{ model = yourModName/yourPartDirectory }</b> to get the model in to the config.</p>
+            <p>Next we add the <b>rescaleFactor</b> which controls the size of your model. It should be around 0.625 if you are shrinking a real scale part to stock size.</p>
             <p>Assuming you created the nodes in Blender (see <a href="/KSPmodding/rigging.html#other-notes">here</a>) use <b>NODE{}</b>, within it should be <b>name</b>, <b>transform</b>, <b>size</b>, and <b>method</b>. <b>name</b> is the... name of your node, <b>transform</b> is the name of the node in Unity (should be node_[something] ), <b>size</b> is how large the attachment is, most of the time is either size 2 or 3 in my experience, finally <b>method</b> is how the attachment would work, most of the time FIXED_JOINT does the trick.</p>
             <p>Afterwards you have the rest of the basic configuration, I won't go through them all but here are the important ones.</p>
             <ul>
                 <li>attachRules = 1,1,1,1,1 ; with the tags being: stack, srfAttach, allowStack, allowSrfAttach, allowCollision</li>
                 <li>maximum_drag and minimum_drag should both be left as 0.1 unless it's a wing or you know what you're doing</li>
-                <li>maxTemp - max temperature of the entire part</li>
-                <li>skinMaxTemp - max temperature of the surface of the part</li>
+                <li>maxTemp - for the entire part</li>
+                <li>skinMaxTemp - for the surface of the part (defaults to maxTemp if not declared)</li>
+                <ul>
+                    <b>Heat limit recommendations:</b>
+                    <li>800K - the Kerbals</li>
+                    <li>1200K - science experiments</li>
+                    <li>1500 K to 2000K - probe cores and crewed part internal temp</li>
+                    <li>2400K to 2500K - Mk2 plane parts and NERVA engine</li>
+                    <li>2600K - fairings</li>
+                    <li>2700K to 2900K - Mk3 plane parts</li>
+                    <li>2800K - radiators</li>
+                    <li>3300K - heat shields</li>
+                    <li>5800K - surface of the Sun</li>
+                </ul>
             </ul>
             <span class="span"></span>
             <img class="center-img" src="/KSPmodding/images/configbasics.png">
 
             <h2><a id="modules">Modules</a></h2>
+            <p>If you are lost, find a part that functions similarly to yours, there should be a module there which fits your purpose. Copy it and adjust its parameters to your liking.</p>
+
             <h3>ModuleAnimateGeneric</h3>
             <ul class="module-list">
                 <li>animationName = animation name in Unity</li>
@@ -62,6 +79,26 @@
                 <li>revClampPercent = leave as true</li>
                 <li>toggleAction = whether action can be toggled</li>
                 <li>defaultActionGroup = as the name suggests</li>
+            </ul>
+
+            <h3>FXModuleLookAtConstraint</h3>
+            <ul class="module-list">
+                <li>CONSTRAINTLOOKFX</li>
+                <ul class="module-list">
+                    <li>targetName = target transform</li>
+                    <li>rotatorsName = transform to be rotated</li>
+                </ul>
+            </ul>
+
+            <h3>FXModuleConstrainPosition</h3>
+            <ul class="module-list">
+                <li>matchRotation = should it match the target's rotation?</li>
+                <li>matchPosition = should it match the target's position?</li>
+                <li>CONSTRAINFX</li>
+                <ul class="module-list">
+                    <li>targetName = as the name suggests</li>
+                    <li>moversName = the transform to be following the target</li>
+                </ul>
             </ul>
         </div>
     </body>

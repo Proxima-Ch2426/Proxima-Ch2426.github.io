@@ -18,10 +18,13 @@
             <a href="/KSPmodding/unity.html#engine-cores">Engine cores</a>
             <a href="/KSPmodding/unity.html#colliders">Colliders</a>
             <a href="/KSPmodding/unity.html#unity-export">Unity export</a>
+            <a href="/KSPmodding/unity.html#unity-layers">Unity layers</a>
         </div>
         <div class="main">
             <h1>Unity</h1>
             <h2><a id="blender-export">Exporting from Blender</a></h2>
+            <p>Before exporting, ensure that your part is centered in world space and orientated as if it is in the VAB.</p>
+            <img class="center-img" src="/KSPmodding/images/blenderexport.png">
             <p>Select the object you wish to export, the go to File > Export > FBX.</p>
             <img class="center-img" src="/KSPmodding/images/export.png">
             <p>In the popup window, set Limit to Selected Objects. Object Types should be set to Empty, Armature, Mesh and Other. Ensure Apply Transform is unchecked, it never works for me.</p>
@@ -58,6 +61,19 @@
             <h2><a id="unity-export">Exporting from Unity</a></h2>
             <p>Assuming you have followed PartTool's installation instructions, the following should be a breeze. In the main parent transform, add the Part Tools component. Fill up the model's name and set the file URL to your mod. If you are writing textures for the first time, leave the Write Textures check box ticked. Once you are ready click Write.</p>
             <p>Note that PartTools export textures as PNGs. KSP has a terrible PNG convertor, so it is recommended to use DDS files. See <a href="/KSPmodding/texturing.html#DDS&PNGs">here</a> for how to export DDS files from Gimp.</p>
+
+            <h2><a id="unity-layers">Unity layers</a></h2>
+            <p>Not all unity layers will be mentioned here, just those that are important for part modding.</p>
+            <ul>
+                <li>Layer 1 - <b>TransparentFX</b></li>
+                <li>Layer 2 - <b>Ignore Raycast</b></li>
+                <li>Layer 16 - <b>Kerbals</b> - For items supposed to be visible in IVA views.</li>
+                <li>Layer 20 - <b>Internal Space</b> - Prevent IVA views from being blocked by props or hull parts, used when creating internal props.</li>
+                <li>Layer 21 - <b>Part Triggers</b> - For hatches and ladders together with box colliders with "is Trigger" checkbox, tag should be placed on this collider.</li>
+                <li>Layer 23 - <b>AeroFXIgnore</b> - Prevent part from showing aero effects</li>
+                <li>Layer 26 - <b>WheelCollidersIgnore</b> - Prevent unwanted interactions between wheel colliders and other colliders.</li>
+                <li>Layer 27 - <b>WheelColliders</b> - For wheel colliders</li>
+            </ul>
         </div>
     </body>
 </html>
