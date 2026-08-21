@@ -1,249 +1,170 @@
 body {
     margin: 0;
-    background: url(images/APC_0004.JPG);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+    overflow: hidden;
+}
+@font-face{
+    font-family: SGP;
+    src: url(fonts/a-otf-shin-go-pro-m-opentype_ufonts.com.otf);
+    font-weight: normal;
 }
 @font-face{
     font-family: Frutiger;
-    src: url(fonts/NotoSans-Regular.ttf);
+    src: url(fonts/FrutigerLTStd-Roman.otf);
     font-weight: normal;
 }
-
-.navbar{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background: linear-gradient(0deg,rgba(235, 235, 235, 0.25) 0%, rgba(173, 173, 173, 0.125) 49%, rgba(199, 199, 199, 0.25) 50%, rgba(161, 161, 161, 0.125) 96%, rgba(255, 255, 255, 0.5) 100%);
-    box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.25);
-    gap: 25px;
-    padding: 10px 25px;
-}
-.pfp{
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    background: url(images/ChevalGrand_PV.jpg);
-    background-size: contain;
-    box-shadow: 0 0 5px rgba(0,0,0,0.5);
-    transition: .2s;
-}
-.pfp:hover{
-    box-shadow: 0 0 10px 0px rgba(255,255,255,0.5);
-    scale: 1.07;
-}
-.navlink{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-.navlink a{
-    color: rgb(223, 240, 241);
-    text-decoration: none;
-    font-family: Frutiger;
-    font-size: 20px;
-    margin: 0;
-    padding: 0;
-    word-break: break-all;
-    transition: .2s;
-}
-.navlink p{
-    margin: 0;
-    filter: drop-shadow(0 -2px 1px rgba(0,0,0,0.25));
-    background: linear-gradient(180deg, #878C87 0%, #D3D4D3 100%);
-    background-clip: text;
-}
-.navlink a:hover{
-    scale: 1.07;
-}
-.active a{
-    color:rgb(150, 222, 255);
-}
-.spacer{
-    width: 1px;
-    height: 35px;
-    background: rgba(255,255,255,0.5);
-    box-shadow: -1px 0px rgba(0,0,0,0.5);
-}
-.content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    gap: 20px;
-    font-family: Frutiger;
-}
-.narrow{
-    padding: 0;
-    max-width: 1000px;
-    width: 90%;
-}
-
-.tile{
-    background: linear-gradient(rgba(255,255,255,0.25), rgba(100,100,100,0.25));
-    border-radius: 5px;
-    padding: 20px;
+.container{
+    position: relative;
     width: 100%;
-    box-sizing: border-box;
+    height: 100vh;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-    backdrop-filter: blur(5px);
-    box-shadow: 0px 10px 15px 2px rgba(0,0,0,0.25), inset 0px 2px 1px rgba(255, 255, 255, 0.3), inset 0px -2px 1px rgba(0, 0, 0, 0.4);
-}
-.tile h1, .tile h4, .tile p{
-    margin: 0;
-    filter: drop-shadow(0 -2px 1px rgba(0,0,0,0.25));
-    background: linear-gradient(180deg, #878C87 0%, #D3D4D3 100%);
-    background-clip: text;
-    color: rgb(223, 240, 241);
-}
-.three{
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 25px;
-}
-.two{
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-}
-.tile.img{
-    gap: 10px;
-    padding: 10px;
-}
-.tile.img img{
-    width: 100%;
-    filter: drop-shadow(0 -2px 1px rgba(0,0,0,0.25));
-    border-radius: 2px;
-}
-.tile.img a{
-    text-decoration: none;
-    color: rgb(223, 240, 241);
-}
-.tile.img a:hover{
-    text-decoration: underline;
-}
-.center a{
-    height: 210px;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    transition: .2s;
-    filter: drop-shadow(0 -2px 1px rgba(0,0,0,0.25));
-}
-.center a:hover{
-    scale: 1.015;
-}
-.list-table{
-    width: 100%;
-    background: linear-gradient(rgba(255,255,255,0.1), rgba(100,100,100,0.1));
-    border-radius: 5px;
-    box-shadow: 0px 3px 3px rgba(0,0,0,0.125), inset 0px 2px 1px rgba(255, 255, 255, 0.3), inset 0px -2px 1px rgba(0, 0, 0, 0.4);
-    overflow: hidden;
-    margin: 5px 0 5px 0;
-}
-.list-table-item{
-    display: grid;
-    grid-template-columns: 30% auto;
-    gap: 15px;
-    padding: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-}
-.list-table-item a{
-    justify-self: right;
-    align-self: center;
-    text-decoration: none;
-    font-weight: bold;
-    color: #b7e4ff;
-    text-align: right;
-    filter: drop-shadow(0 -2px 1px rgba(0,0,0,0.125));
-}
-.list-table-item a:hover{
-    text-decoration: underline;
-}
-.list-table-item img{
-    height: 20px;
-}
-.list-table-item p{
-    color: rgb(223, 240, 241);;
-}
-.list-table-item:nth-child(2n){
-    background: rgba(54, 54, 54, 0.05);
-}
-.list-table-item:first-child{
-    border-top: none;
-}
-.list-table-item:last-child{
-    border-bottom: none;
-}
-.list-table-icon{
-    display: flex;
     align-items: center;
-    gap: 5px;
 }
-.tile.img ul{
-    margin: 0 0 10px 0;
-    filter: drop-shadow(0 -2px 1px rgba(0,0,0,0.25));
-    background: linear-gradient(180deg, #878C87 0%, #D3D4D3 100%);
-    background-clip: text;
-    color: rgb(223, 240, 241);
-    padding-inline-start: 20px;
+@keyframes box{
+    0% {width: 0; height: 0;}
+    50% {width: 70vw; height: 5px;}
+    100% {width: 70vw; height: 70vh;}
 }
-.ksp{
-    background: linear-gradient(rgba(0,0,0,0.125), rgba(0,0,0,0.25)), url(/images/screenshot81.png);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
+@keyframes flicker{
+    0% {opacity: 0;}
+    25% {opacity: 0.5;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
 }
-.ksp-navbar{
-    background: linear-gradient(0deg,rgba(235, 235, 235, 0.2) 0%, rgba(173, 173, 173, 0.125) 49%, rgba(199, 199, 199, 0.2) 50%, rgba(161, 161, 161, 0.125) 96%, rgba(255, 255, 255, 0.5) 100%);
-    backdrop-filter: blur(5px);
+.box{
+    width: 70vw;
+    height: 70vh;
+    border-radius: 10px;
+    border: 2px solid black;
+    box-shadow: inset 0 0 1px 1px white, 0 0 5px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(30deg, rgba(12, 12, 12, 0.75), rgba(249, 249, 249, 0.5));
+    animation: box .3s;
 }
-.game-info{
-    margin: 0 0 10px 0;
-    filter: drop-shadow(0 -2px 1px rgba(0,0,0,0.25));
-    background: linear-gradient(180deg, #878C87 0%, #D3D4D3 100%);
-    background-clip: text;
-    color: rgb(223, 240, 241);
-    padding-inline-start: 20px;
+.container span{
+    transform: perspective(20cm) rotateX(0deg) rotateY(0deg) translate(0px, 0px);
+    position: fixed;
 }
-.umamusume
-{
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.75)), url(/images/Umamusume/Uma.Musume_.Pretty.Derby.full.4082556.jpg);
-    background-size: 150%;
-    background-attachment: fixed;
-    background-position: 20% 10%;
-}
-.split{
-    width: 100%;
+.logo{
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    animation: flicker .3s;
+    animation-delay: .2s;
+    animation-fill-mode: both;
 }
-.split-left{
-    width: 50%;
-    filter: drop-shadow(0 -2px 1px rgba(0,0,0,0.25));
-    background: linear-gradient(180deg, #878C87 0%, #D3D4D3 100%);
-    background-clip: text;
-    color: rgb(223, 240, 241);
+.logo img{
+    width: 50vw;
+    filter: drop-shadow(0 0 5px white);
 }
-.split-right{
-    width: 50%;
-    overflow: hidden;
+.colours{
+    width: 2vw;
+    height: 2vw;
+    border-radius: 5px;
+    border: 1px solid rgb(51, 51, 51);
+    box-shadow: inset 0 0 1px 1px white, 0 0 5px rgba(0, 0, 0, 0.25);
+    margin: 20px;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    animation: flicker .2s;
+    animation-delay: .4s;
+    animation-fill-mode: both;
 }
-.split-right img{
-    width: 100%;
-    filter: drop-shadow(5px 5px 10px rgba(0,0,0,1));
-    margin-top: -100px;
+.c{
+    background: cyan;
 }
-.uma {
-    overflow: hidden;
+.m{
+    background: magenta;
+    left: 3.5%;
 }
-.uma img{
-    margin-top: 0px;
+.y{
+    background: yellow;
+    left: 7%;
+}
+.button{
+    border-radius: 5px;
+    border: 1px solid rgb(51, 51, 51);
+    box-shadow: inset 0 0 2px 1px lightgray, 0 0 5px rgba(251, 251, 251, 0.25);
+    background: linear-gradient(30deg, rgba(77, 77, 77, 0.75), rgba(100, 100, 100, 0.5));
+    position: relative;
+    top: 90%;
+    left: 90.5%;
+    display: flex;
+    backdrop-filter: blur(10px);
+    z-index: 99;
+    animation: flicker .3s;
+    animation-delay: .3s;
+    animation-fill-mode: both;
+}
+.button a{
+    display: flex;
+    width: 150px;
+    height: 75px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    transition: .2s;
+    font-family: Frutiger;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: white;
+}
+.button a:hover{
+    padding: 10px;
+    font-size: 2em;
+    text-shadow: 0 0 5px lightgray;
+}
+.update{
+    display: flex;
+    align-items: flex-end;
+    border-radius: 5px;
+    border: 1px solid rgb(51, 51, 51);
+    box-shadow: inset 0 0 1px 1px lightgray, 0 0 5px rgba(251, 251, 251, 0.25);
+    background: linear-gradient(30deg, rgba(77, 77, 77, 0.75), rgba(100, 100, 100, 0.5));
+    position: relative;
+    top: 85%;
+    left: -1%;
+    z-index: 99;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    color: white;
+    width: 17vw;
+    font-size: 1vw;
+    font-family: Frutiger;
+    animation: flicker .2s;
+    animation-delay: .5s;
+    animation-fill-mode: both;
+}
+.update img{
+    width: 7vw;
+    margin-right: 20px;
+}
+.update-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.update p{
+    margin: 0;
+    font-size: 1.5vw;
+}
+.bg{
+    z-index: -9999;
+    scale: 1.5;
+    filter: blur(50px) brightness(50%);
+}
+.CG{
+    position: relative;
+    left: 55vw;
+}
+.CG img{
+    width: 20vw;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    animation: flicker .2s;
+    animation-delay: .3s;
+    animation-fill-mode: both;
 }

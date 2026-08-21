@@ -1,0 +1,222 @@
+body {
+    margin: 0;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    overflow: hidden;
+}
+@font-face{
+    font-family: SGP;
+    src: url(/fonts/a-otf-shin-go-pro-m-opentype_ufonts.com.otf);
+    font-weight: normal;
+}
+@font-face{
+    font-family: Frutiger;
+    src: url(/fonts/FrutigerLTStd-Roman.otf);
+    font-weight: normal;
+}
+@keyframes flicker{
+    0% {opacity: 0;}
+    25% {opacity: 0.5;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.container{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+.bg{
+    z-index: -9999;
+    scale: 1.5;
+    filter: blur(50px) brightness(50%);
+}
+.ui-container{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+.left-container{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right-container{
+    width: 95%;
+    height: 92%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+}
+.nav{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: SGP;
+    font-size: 1.5em;
+    padding: 10px;
+    animation: flicker .2s;
+}
+.nav a{
+    display: block;
+    width: 10vw;
+    margin-bottom: 10px;
+    background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.25));
+    border: 1px solid gray;
+    padding: 10px 10px;
+    border-radius: 5px;
+    color: white;
+    transition: .2s;
+    text-decoration: none;
+    text-shadow: 0 0 2px lightgray;
+    box-shadow: 0 0 3px black;
+    backdrop-filter: blur(5px);
+    animation: flicker .3s;
+    animation-delay: .2s;
+    animation-fill-mode: both;
+}
+.nav a:hover{
+    scale: 1.1;
+    text-shadow: 0 0 5px white;
+}
+.box{
+    border-radius: 10px;
+    border: 2px solid black;
+    box-shadow: inset 0 0 1px 1px gray, 0 0 5px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(45deg, rgba(70, 70, 70, 0.5), rgba(249, 249, 249, 0.25));
+}
+.content{
+    width: 95%;
+    padding: 10px 20px 30px 20px;
+    color: white;
+    text-shadow: 0 -2px 5px rgb(20, 20, 20);
+    margin-bottom: 1%;
+    animation: flicker .2s;
+    animation-fill-mode: both;
+}
+.content h1{
+    font-family: SGP;
+    margin: 0;
+    font-size: 2.5em;
+}
+.content p, .content b{
+    font-family: Frutiger;
+    margin: 0;
+    font-size: 1.25em;
+}
+.img-showcase{
+    margin: 0;
+    padding: 0;
+    width: 97%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1%;
+}
+.image{
+    width:47%;
+    height: auto;
+    margin: 0;
+    padding: 20px;
+}
+.image img{
+    width: 100%;
+    border: 2px solid black;
+    box-shadow: 0 0 1px 2px gray;
+    border-radius: 2px;
+}
+.image p{
+    margin-top: 10px;
+}
+.uma{
+    position: absolute;
+    left: -5%;
+    top: 5%;
+    animation: flicker .2s;
+    animation-delay: .3s;
+    animation-fill-mode: both;
+}
+.uma img{
+    height: 100vh;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+.carat{
+    position: absolute;
+    left: 93%;
+    top: 7%;
+    animation: flicker .2s;
+    animation-delay: .2s;
+    animation-fill-mode: both;
+}
+.links{
+    list-style-type: none;
+    font-family: Frutiger;
+    font-size: 1.5em;
+    padding: 0;
+}
+.links li{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.links a{
+    display: block;
+    background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.25));
+    border: 1px solid gray;
+    padding: 10px 10px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 0 2px lightgray;
+    box-shadow: 0 0 3px black;
+    width: 10%;
+    transition: .2s;
+    margin-right: 20px;
+}
+.links a:hover{
+    scale: 1.1;
+    text-shadow: 0 0 5px white;
+}
+.interest{
+    display: flex;
+    width: 30%;
+    height: 25vh;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+}
+.interest:hover{
+    scale: 1.05;
+}
+.interest img{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+.interest-container{
+    display: flex;
+    justify-content: space-between;
+}
+.aston{
+    position: absolute;
+    right: -25vw;
+    transition: 2s ease-out;
+}
+.aston img{
+    height: 100vh;
+}
+.ui-container:has(.machan:hover) .aston{
+    right: -10vw;
+    rotate: -20deg;
+}
